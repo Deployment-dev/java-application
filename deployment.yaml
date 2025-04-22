@@ -18,7 +18,7 @@ spec:
       imagePullSecrets:
       - name: dockerreposecret
       containers:
-      - image: pachaanilkumar/java-application-mongo-docker:9a2c2dc
+      - image: pachaanilkumar/java-application:ef082bd
         name: java-application
         ports:
         - name: java-app
