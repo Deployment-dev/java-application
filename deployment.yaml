@@ -31,7 +31,7 @@ metadata:
   labels:
     name: java-application
   name: java-application
-  namespace: java-application
+  namespace: spring-controller
 spec:
   type: NodePort
   ports:
