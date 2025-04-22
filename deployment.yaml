@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: java-application
+  name: spring-controller
+  namespace: java-application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: java-application
+  template:
+    metadata:
+      labels:
+        name: java-application
+    spec:
+      imagePullSecrets:
+      - name: dockerreposecret
+      containers:
+      - image: pachaanilkumar/java-application-mongo-docker:9a2c2dc
+        name: java-application
+        ports:
+        - name: java-app
+          containerPort: 8080
+---
+# Node Port Service
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: java-application
+  name: java-application
+  namespace: java-application
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    name: java-application
